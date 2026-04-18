@@ -45,7 +45,7 @@ resources:
     memory: 5Gi
   limits:
     cpu: "4"
-    memory: 6Gi
+    memory: 9Gi
 
 # World, player data, logs, and any files written under /data live on this volume.
 # Leave enabled: true for production; disabling uses emptyDir and data is lost when the pod is removed.
@@ -57,7 +57,7 @@ resources:
 # Chart-managed volumeClaimTemplates are not created in that case. Use replicaCount: 1 with typical RWO volumes.
 persistence:
   enabled: true
-  existingClaim: ""
+  existingClaim: plex-pvc
   volumeSubPath: minecraft
   subPathInitImage: busybox:1.36
   storageClass: ""
