@@ -1,0 +1,14 @@
+{
+	version: 1
+	uuid: "54ab3c1c0c8247a4bfc143255d9a0d4d"
+	name: "kyle822#54ab3c1c"
+	lock: false
+	rewards_blocked: false
+	task_progress: { }
+	started: { }
+	completed: { }
+	repeatable: { }
+	completion_count: { }
+	claimed_rewards: { }
+	player_data: { }
+}

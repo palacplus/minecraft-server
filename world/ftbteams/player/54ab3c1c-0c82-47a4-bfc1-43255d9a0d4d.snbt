@@ -1,0 +1,31 @@
+{
+	id: "54ab3c1c-0c82-47a4-bfc1-43255d9a0d4d"
+	type: "player"
+	player_name: "kyle822"
+	ranks: {
+		54ab3c1c-0c82-47a4-bfc1-43255d9a0d4d: "owner"
+	}
+	properties: {
+		"ftbteams:display_name": "kyle822"
+		"ftbteams:description": ""
+		"ftbteams:color": "#FF59BB"
+		"ftbteams:free_to_join": 0b
+		"ftbteams:max_msg_history_size": 1000
+		"ftbteams:team_stages": [ ]
+		"ftbteams:lives_remaining": 0
+		"ftbchunks:allow_explosions": 0b
+		"ftbchunks:allow_mob_griefing": 0b
+		"ftbchunks:allow_fake_players": 0b
+		"ftbchunks:allow_named_fake_players": [ ]
+		"ftbchunks:allow_fake_players_by_id": 1b
+		"ftbchunks:allow_pvp": 1b
+		"ftbchunks:block_edit_mode": "allies"
+		"ftbchunks:block_interact_mode": "allies"
+		"ftbchunks:entity_interact_mode": "allies"
+		"ftbchunks:nonliving_entity_attack_mode": "allies"
+		"ftbchunks:claim_visibility": "public"
+		"ftbchunks:location_mode": "allies"
+	}
+	message_history: [ ]
+	extra: { }
+}
