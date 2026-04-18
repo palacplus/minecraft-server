@@ -1,5 +1,5 @@
-{{- if and .Values.persistence.existingClaim (not .Values.persistence.enabled) }}
-{{- fail "persistence.enabled must be true when persistence.existingClaim is set" }}
+{{- if and .Values.persistence.enabled (not .Values.persistence.existingClaim) }}
+{{- fail "persistence.existingClaim is required when persistence.enabled is true; this chart does not create PVCs" }}
 {{- end }}
 apiVersion: apps/v1
 kind: StatefulSet
@@ -16,11 +16,6 @@ spec:
   {{- with .Values.updateStrategy }}
   updateStrategy:
     {{- toYaml . | nindent 4 }}
-  {{- end }}
-  {{- if and .Values.persistence.enabled (not .Values.persistence.existingClaim) .Values.persistence.retention.enabled (semverCompare ">=1.27.0-0" .Capabilities.KubeVersion.Version) }}
-  persistentVolumeClaimRetentionPolicy:
-    whenDeleted: {{ .Values.persistence.retention.whenDeleted }}
-    whenScaled: {{ .Values.persistence.retention.whenScaled }}
   {{- end }}
   template:
     metadata:
@@ -135,7 +130,7 @@ spec:
         {{- if not .Values.persistence.enabled }}
         - name: data
           emptyDir: {}
-        {{- else if .Values.persistence.existingClaim }}
+        {{- else }}
         - name: data
           persistentVolumeClaim:
             claimName: {{ .Values.persistence.existingClaim | quote }}
@@ -143,25 +138,3 @@ spec:
         {{- with .Values.extraVolumes }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
-  {{- if and .Values.persistence.enabled (not .Values.persistence.existingClaim) }}
-  volumeClaimTemplates:
-    - metadata:
-        name: data
-        labels:
-          {{- include "minecraft.selectorLabels" . | nindent 10 }}
-        {{- with .Values.persistence.annotations }}
-        annotations:
-          {{- toYaml . | nindent 10 }}
-        {{- end }}
-      spec:
-        accessModes:
-          {{- range .Values.persistence.accessModes }}
-          - {{ . | quote }}
-          {{- end }}
-        resources:
-          requests:
-            storage: {{ .Values.persistence.size | quote }}
-        {{- if .Values.persistence.storageClass }}
-        storageClassName: {{ .Values.persistence.storageClass | quote }}
-        {{- end }}
-  {{- end }}

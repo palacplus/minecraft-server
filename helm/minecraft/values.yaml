@@ -48,28 +48,18 @@ resources:
     memory: 9Gi
 
 # World, player data, logs, and any files written under /data live on this volume.
-# Leave enabled: true for production; disabling uses emptyDir and data is lost when the pod is removed.
+# Leave enabled: true for production; disabling uses emptyDir and data is lost when the pod is removed (existingClaim is then ignored).
 #
 # volumeSubPath: subdirectory on the PVC filesystem that is mounted at /data in the container (so the PV holds
 # e.g. minecraft/world/...). Set to "" to mount the PVC root at /data (older layouts).
 #
-# Use an existing PVC (must already exist in the release namespace): set existingClaim to its name.
-# Chart-managed volumeClaimTemplates are not created in that case. Use replicaCount: 1 with typical RWO volumes.
+# This chart never creates PVCs. When persistence.enabled is true, set existingClaim to a PVC that already
+# exists in the release namespace. Use replicaCount: 1 with typical RWO volumes.
 persistence:
   enabled: true
   existingClaim: plex-pvc
   volumeSubPath: minecraft
   subPathInitImage: busybox:1.36
-  storageClass: ""
-  accessModes:
-    - ReadWriteOnce
-  size: 20Gi
-  annotations: {}
-  # Kubernetes 1.27+: keep PVCs if the StatefulSet is deleted or scaled to zero (ignored when using existingClaim).
-  retention:
-    enabled: true
-    whenDeleted: Retain
-    whenScaled: Retain
 
 service:
   type: NodePort
