@@ -19,10 +19,17 @@ spec:
   selector:
     {{- include "minecraft.selectorLabels" . | nindent 4 }}
   ports:
-    - name: minecraft
+    - name: minecraft-tcp
       port: {{ .Values.minecraft.servicePort }}
-      targetPort: minecraft
+      targetPort: {{ .Values.minecraft.servicePort }}
       protocol: TCP
+      {{- if and (eq .Values.service.type "NodePort") .Values.service.nodePort }}
+      nodePort: {{ .Values.service.nodePort }}
+      {{- end }}
+    - name: minecraft-udp
+      port: {{ .Values.minecraft.servicePort }}
+      targetPort: {{ .Values.minecraft.servicePort }}
+      protocol: UDP
       {{- if and (eq .Values.service.type "NodePort") .Values.service.nodePort }}
       nodePort: {{ .Values.service.nodePort }}
       {{- end }}

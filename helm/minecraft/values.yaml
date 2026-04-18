@@ -72,11 +72,11 @@ persistence:
     whenScaled: Retain
 
 service:
-  type: ClusterIP
+  type: NodePort
   annotations: {}
-  # nodePort: 30565
-  loadBalancerIP: ""
-  externalTrafficPolicy: ""
+  nodePort: 30565
+  # loadBalancerIP: ""
+  # externalTrafficPolicy: ""
 
 nodeSelector: {}
 tolerations: []
