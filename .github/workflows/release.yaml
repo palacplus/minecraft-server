@@ -49,6 +49,33 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # semver-action's fallbackTag must already exist as a remote tag. When the repo has
+      # no semver tags yet, create v0.0.0 at the initial commit so the action has a baseline.
+      - name: Bootstrap initial semver tag
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git fetch origin --tags --force
+          if git ls-remote --tags origin \
+            | awk '{print $2}' \
+            | sed 's|refs/tags/||' \
+            | sed 's/\^{}//' \
+            | sort -u \
+            | grep -qE '^v?[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "Semver tag already present on origin"
+            exit 0
+          fi
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          ROOT=$(git rev-list --max-parents=0 HEAD | tail -n1)
+          git tag v0.0.0 "$ROOT"
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push origin v0.0.0 || true
+          git fetch origin --tags --force
 
       - name: Get next version
         id: semver
@@ -56,7 +83,6 @@ jobs:
         with:
           token: ${{ github.token }}
           branch: ${{ github.ref_name }}
-          fallbackTag: "0.0.0"
           patchAll: true
           majorList: BREAKING
           noVersionBumpBehavior: patch
