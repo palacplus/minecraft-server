@@ -43,12 +43,13 @@ spec:
       {{- end }}
       {{- if .Values.persistence.volumeSubPath }}
       initContainers:
+        # Create subPath only; chown often fails on NFS/root_squash—fsGroup handles volume access for UID/GID 1000.
         - name: ensure-volume-subpath
           image: {{ .Values.persistence.subPathInitImage | quote }}
           command:
             - sh
             - -c
-            - mkdir -p "/mnt/{{ .Values.persistence.volumeSubPath }}" && chown 1000:1000 "/mnt/{{ .Values.persistence.volumeSubPath }}"
+            - mkdir -p "/mnt/{{ .Values.persistence.volumeSubPath }}"
           securityContext:
             runAsUser: 0
           volumeMounts:
