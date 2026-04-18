@@ -1,0 +1,14 @@
+1. Image builds run on GitHub Actions (push to `main` or workflow dispatch). The image is pushed to GHCR as:
+   ghcr.io/<github-owner>/<github-repo>-neoforge:<release-tag>
+   To build locally from the repository root (the image includes only the `server/` directory):
+   docker build -t ghcr.io/<owner>/<repo>-neoforge:local .
+
+2. Install or upgrade (match repository and tag to your GHCR image):
+   helm upgrade --install RELEASE ./helm/minecraft -n NAMESPACE \
+     --set image.repository=ghcr.io/<owner>/<repo>-neoforge \
+     --set image.tag=<release-tag>
+
+3. Point clients at the Service (LoadBalancer/NodePort) or use kubectl port-forward:
+   kubectl port-forward svc/{{ include "minecraft.fullname" . }} {{ .Values.minecraft.servicePort }}:{{ .Values.minecraft.servicePort }} -n {{ .Release.Namespace }}
+
+4. Data persistence: the StatefulSet mounts a PVC so the game still uses /data in the container. By default persistence.volumeSubPath is "minecraft", so files on the volume live under a top-level minecraft/ directory (e.g. minecraft/world). Set persistence.volumeSubPath to "" to mount the PVC root at /data (e.g. if you already have world/ at the volume root). Either let the chart create a PVC, or set persistence.existingClaim. Keep persistence.enabled true in production. On Kubernetes 1.27+, PVC retention applies only to chart-created claims (see values.yaml). For Docker Compose, a named volume still maps to /data at the volume root; use a bind mount to a host .../minecraft directory mounted at /data to mirror the Helm layout.

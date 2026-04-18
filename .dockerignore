@@ -1,0 +1,8 @@
+.git
+.github
+helm
+**/.DS_Store
+**/Thumbs.db
+server/logs
+server/crash-reports
+server/**/*.log

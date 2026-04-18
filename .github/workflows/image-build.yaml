@@ -1,0 +1,74 @@
+name: Build and Push Docker Image
+
+on:
+  workflow_call:
+    inputs:
+      tagOverride:
+        required: false
+        type: string
+        description: Override the semver tag used for the image (e.g. v1.2.3)
+      imageName:
+        required: true
+        type: string
+        description: Short image suffix (published as ghcr.io/<repo>-<imageName>)
+      dockerfile:
+        required: true
+        type: string
+        description: Path to Dockerfile
+    outputs:
+      imageTag:
+        description: Primary image tag that was pushed
+        value: ${{ jobs.build-and-push-image.outputs.imageTag }}
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
+    outputs:
+      imageTag: ${{ steps.first-tag.outputs.tag }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata for image
+        id: metadata
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-${{ inputs.imageName }}
+          tags: |
+            type=ref,event=branch
+            type=semver,pattern={{version}}
+            type=semver,pattern={{version}},value=${{ inputs.tagOverride }}
+
+      - name: Extract first tag
+        id: first-tag
+        run: |
+          FIRST_TAG=$(echo "${{ steps.metadata.outputs.tags }}" | head -n1)
+          echo "tag=$FIRST_TAG" >> "$GITHUB_OUTPUT"
+          echo "tag: $FIRST_TAG"
+
+      - name: Build and push image
+        id: build
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ${{ inputs.dockerfile }}
+          push: true
+          tags: ${{ steps.metadata.outputs.tags }}
+          labels: ${{ steps.metadata.outputs.labels }}

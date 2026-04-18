@@ -1,0 +1,90 @@
+name: Create Release and Publish Image
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  image-paths:
+    runs-on: ubuntu-latest
+    outputs:
+      rebuild: ${{ steps.paths.outputs.rebuild }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect Docker context changes
+        id: paths
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "rebuild=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          BEFORE="${{ github.event.before }}"
+          AFTER="${{ github.sha }}"
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            echo "rebuild=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if git diff --name-only "$BEFORE" "$AFTER" | grep -qE '^server/|^docker-entrypoint\.sh$'; then
+            echo "rebuild=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "rebuild=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  tag-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      tag: ${{ steps.semver.outputs.next }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get next version
+        id: semver
+        uses: ietf-tools/semver-action@v1
+        with:
+          token: ${{ github.token }}
+          branch: ${{ github.ref_name }}
+          fallbackTag: "0.0.0"
+          patchAll: true
+          majorList: BREAKING
+          noVersionBumpBehavior: patch
+
+      - name: Create or update GitHub release
+        uses: ncipollo/release-action@v1.12.0
+        with:
+          allowUpdates: true
+          prerelease: false
+          draft: false
+          makeLatest: true
+          commit: ${{ github.sha }}
+          tag: ${{ steps.semver.outputs.next }}
+          name: ${{ steps.semver.outputs.next }}
+          generateReleaseNotes: true
+          token: ${{ github.token }}
+
+  build-neoforge-image:
+    uses: ./.github/workflows/image-build.yaml
+    needs: [tag-release, image-paths]
+    if: github.event_name == 'workflow_dispatch' || needs.image-paths.outputs.rebuild == 'true'
+    secrets: inherit
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
+    with:
+      imageName: neoforge
+      dockerfile: Dockerfile
+      tagOverride: ${{ needs.tag-release.outputs.tag }}

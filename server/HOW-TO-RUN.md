@@ -1,5 +1,7 @@
 # How To Start / Run The Server
 
+The NeoForge pack and runtime files live in the `server/` directory at the repository root. Open a terminal there before running the scripts below (`cd server`).
+
 If your `variables.txt` has `JAVA=java` set, then a suitable Java version for your Minecraft server will
 be installed automatically.
 
@@ -7,6 +9,12 @@ Forge and NeoForge 1.17 and up will create run.xx-scripts due to the ServerStart
 and run the server. It is safe to ignore these and continue using the start.xx-scripts.
 Deleting the run.xx-scripts will result in the server being installed again by the ServerStarterJar. More about
 the ServerStarterJar at https://github.com/neoforged/ServerStarterJar
+
+## Docker (persistent world and `/data`)
+
+From the **repository root** (parent of `server/`), run `docker compose up --build` so the world and all files under `/data` are stored in the `minecraft_data` Docker volume instead of only inside the container filesystem.
+
+When you run the **Docker/Kubernetes image**, **every** file and directory from the pack in the image is copied over matching names in `/data` on **each container start**, except **`world/`** and **`logs/`**, which stay on the volume (matching is **case-insensitive**, so `World` or `LOGS` are also skipped). Only single-component names under `/data` are replaced—paths containing `/` are ignored. Anything that exists only on the volume (never shipped in the image) is not removed. `user_jvm_args.txt` is still replaced afterward when Helm mounts `/etc/minecraft/user_jvm_args.txt`. Edit the pack under `server/` in this repository and rebuild or redeploy the image so changes stick. (The usual `start.sh` flow on your machine does not do this.)
 
 ## Linux
 

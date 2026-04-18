@@ -1,0 +1,106 @@
+# GitHub Actions publishes ghcr.io/<owner>/<repo>-neoforge:<release-tag> (see .github/workflows).
+image:
+  repository: ghcr.io/your-github-user-or-org/minecraft-server-neoforge
+  tag: latest
+  pullPolicy: IfNotPresent
+
+nameOverride: ""
+fullnameOverride: ""
+
+replicaCount: 1
+
+serviceAccount:
+  create: false
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+podLabels: {}
+
+podSecurityContext:
+  fsGroup: 1000
+
+securityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+  runAsGroup: 1000
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: false
+  capabilities:
+    drop:
+      - ALL
+
+minecraft:
+  servicePort: 25565
+  jvm:
+    # Passed to user_jvm_args.txt on each start (overrides pack defaults when chart-managed file is mounted).
+    memory: 4G
+    extraArgs: []
+  # Extra lines appended to user_jvm_args.txt (e.g. Aikar flags as separate list items).
+  jvmExtraLines: []
+
+resources:
+  requests:
+    cpu: "1"
+    memory: 5Gi
+  limits:
+    cpu: "4"
+    memory: 6Gi
+
+# World, player data, logs, and any files written under /data live on this volume.
+# Leave enabled: true for production; disabling uses emptyDir and data is lost when the pod is removed.
+#
+# volumeSubPath: subdirectory on the PVC filesystem that is mounted at /data in the container (so the PV holds
+# e.g. minecraft/world/...). Set to "" to mount the PVC root at /data (older layouts).
+#
+# Use an existing PVC (must already exist in the release namespace): set existingClaim to its name.
+# Chart-managed volumeClaimTemplates are not created in that case. Use replicaCount: 1 with typical RWO volumes.
+persistence:
+  enabled: true
+  existingClaim: ""
+  volumeSubPath: minecraft
+  subPathInitImage: busybox:1.36
+  storageClass: ""
+  accessModes:
+    - ReadWriteOnce
+  size: 20Gi
+  annotations: {}
+  # Kubernetes 1.27+: keep PVCs if the StatefulSet is deleted or scaled to zero (ignored when using existingClaim).
+  retention:
+    enabled: true
+    whenDeleted: Retain
+    whenScaled: Retain
+
+service:
+  type: ClusterIP
+  annotations: {}
+  # nodePort: 30565
+  loadBalancerIP: ""
+  externalTrafficPolicy: ""
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+updateStrategy:
+  type: RollingUpdate
+
+terminationGracePeriodSeconds: 60
+
+livenessProbe:
+  enabled: true
+  initialDelaySeconds: 180
+  periodSeconds: 30
+  failureThreshold: 5
+  timeoutSeconds: 5
+
+readinessProbe:
+  enabled: true
+  initialDelaySeconds: 120
+  periodSeconds: 10
+  failureThreshold: 12
+  timeoutSeconds: 5
+
+extraEnv: []
+extraVolumeMounts: []
+extraVolumes: []
