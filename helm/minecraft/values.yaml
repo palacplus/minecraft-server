@@ -18,12 +18,12 @@ podAnnotations: {}
 podLabels: {}
 
 podSecurityContext:
-  fsGroup: 1000
+  fsGroup: 65534
 
 securityContext:
   runAsNonRoot: true
-  runAsUser: 1000
-  runAsGroup: 1000
+  runAsUser: 65534
+  runAsGroup: 65534
   allowPrivilegeEscalation: false
   readOnlyRootFilesystem: false
   capabilities:
