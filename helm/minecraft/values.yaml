@@ -52,6 +52,8 @@ resources:
 #
 # volumeSubPath: subdirectory on the PVC filesystem that is mounted at /data in the container (so the PV holds
 # e.g. minecraft/world/...). Set to "" to mount the PVC root at /data (older layouts).
+# If you previously used an initContainer that ran as root on NFS, remove that subdirectory on the volume once so it
+# can be recreated with correct ownership (otherwise you may see Permission denied under /data).
 #
 # This chart never creates PVCs. When persistence.enabled is true, set existingClaim to a PVC that already
 # exists in the release namespace. Use replicaCount: 1 with typical RWO volumes.

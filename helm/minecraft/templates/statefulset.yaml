@@ -43,7 +43,8 @@ spec:
       {{- end }}
       {{- if .Values.persistence.volumeSubPath }}
       initContainers:
-        # Create subPath only; chown often fails on NFS/root_squash—fsGroup handles volume access for UID/GID 1000.
+        # Run as the same UID/GID as the server: root on NFS/root_squash often creates the subdir as nobody, so
+        # UID 1000 cannot cp into /data (Permission denied). fsGroup on the pod makes the PV root group-writable.
         - name: ensure-volume-subpath
           image: {{ .Values.persistence.subPathInitImage | quote }}
           command:
@@ -51,7 +52,14 @@ spec:
             - -c
             - mkdir -p "/mnt/{{ .Values.persistence.volumeSubPath }}"
           securityContext:
-            runAsUser: 0
+            allowPrivilegeEscalation: {{ .Values.securityContext.allowPrivilegeEscalation | default false }}
+            {{- with .Values.securityContext.capabilities }}
+            capabilities:
+              {{- toYaml . | nindent 14 }}
+            {{- end }}
+            runAsNonRoot: true
+            runAsUser: {{ .Values.securityContext.runAsUser | default 1000 }}
+            runAsGroup: {{ .Values.securityContext.runAsGroup | default 1000 }}
           volumeMounts:
             - name: data
               mountPath: /mnt
