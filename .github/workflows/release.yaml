@@ -40,7 +40,7 @@ jobs:
             echo "rebuild=false" >> "$GITHUB_OUTPUT"
           fi
 
-  tag-release:
+  tag-version:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -87,22 +87,9 @@ jobs:
           majorList: BREAKING
           noVersionBumpBehavior: patch
 
-      - name: Create or update GitHub release
-        uses: ncipollo/release-action@v1.12.0
-        with:
-          allowUpdates: true
-          prerelease: false
-          draft: false
-          makeLatest: true
-          commit: ${{ github.sha }}
-          tag: ${{ steps.semver.outputs.next }}
-          name: ${{ steps.semver.outputs.next }}
-          generateReleaseNotes: true
-          token: ${{ github.token }}
-
   build-neoforge-image:
     uses: ./.github/workflows/image-build.yaml
-    needs: [tag-release, image-paths]
+    needs: [tag-version, image-paths]
     if: github.event_name == 'workflow_dispatch' || needs.image-paths.outputs.rebuild == 'true'
     secrets: inherit
     permissions:
@@ -113,4 +100,23 @@ jobs:
     with:
       imageName: neoforge
       dockerfile: Dockerfile
-      tagOverride: ${{ needs.tag-release.outputs.tag }}
+      tagOverride: ${{ needs.tag-version.outputs.tag }}
+
+  create-release:
+    runs-on: ubuntu-latest
+    needs: [tag-version, build-neoforge-image]
+    permissions:
+      contents: write
+    steps:
+      - name: Create or update GitHub release
+        uses: ncipollo/release-action@v1.12.0
+        with:
+          allowUpdates: true
+          prerelease: false
+          draft: false
+          makeLatest: true
+          commit: ${{ github.sha }}
+          tag: ${{ needs.tag-version.outputs.tag }}
+          name: ${{ needs.tag-version.outputs.tag }}
+          generateReleaseNotes: true
+          token: ${{ github.token }}

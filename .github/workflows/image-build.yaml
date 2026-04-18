@@ -1,6 +1,20 @@
 name: Build and Push Docker Image
 
 on:
+  workflow_dispatch:
+    inputs:
+      tagOverride:
+        required: false
+        type: string
+        description: Override the semver tag used for the image (e.g. v1.2.3)
+      imageName:
+        required: true
+        type: string
+        description: Short image suffix (published as ghcr.io/<repo>-<imageName>)
+      dockerfile:
+        required: true
+        type: string
+        description: Path to Dockerfile
   workflow_call:
     inputs:
       tagOverride:
