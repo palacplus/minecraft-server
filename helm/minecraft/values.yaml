@@ -68,7 +68,7 @@ service:
   annotations: {}
   nodePort: null
   # loadBalancerIP: ""
-  externalTrafficPolicy: Local
+  externalTrafficPolicy: Cluster
 
 externalDNS:
   enabled: true
