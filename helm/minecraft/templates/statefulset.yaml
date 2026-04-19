@@ -78,8 +78,11 @@ spec:
           {{- end }}
           {{- if .Values.livenessProbe.enabled }}
           livenessProbe:
-            tcpSocket:
-              port: minecraft
+            exec:
+              command:
+                - /bin/bash
+                - -ec
+                - echo -n "ping" > /dev/udp/127.0.0.1/{{ .Values.minecraft.servicePort }}
             initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
             periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
             failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
@@ -87,8 +90,11 @@ spec:
           {{- end }}
           {{- if .Values.readinessProbe.enabled }}
           readinessProbe:
-            tcpSocket:
-              port: minecraft
+            exec:
+              command:
+                - /bin/bash
+                - -ec
+                - echo -n "ping" > /dev/udp/127.0.0.1/{{ .Values.minecraft.servicePort }}
             initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
             periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
             failureThreshold: {{ .Values.readinessProbe.failureThreshold }}
