@@ -79,15 +79,16 @@ updateStrategy:
 
 terminationGracePeriodSeconds: 60
 
+## TODO: Create UDP probe
 livenessProbe:
-  enabled: true
+  enabled: false
   initialDelaySeconds: 180
   periodSeconds: 30
   failureThreshold: 5
   timeoutSeconds: 5
 
 readinessProbe:
-  enabled: true
+  enabled: false
   initialDelaySeconds: 120
   periodSeconds: 10
   failureThreshold: 12
