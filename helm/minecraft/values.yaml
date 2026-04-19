@@ -64,11 +64,11 @@ persistence:
   subPathInitImage: busybox:1.36
 
 service:
-  type: LoadBalancer
+  type: NodePort
   annotations: {}
-  nodePort: null
+  nodePort: 30565
   # loadBalancerIP: ""
-  externalTrafficPolicy: Cluster
+  # externalTrafficPolicy: ""
 
 externalDNS:
   enabled: true
