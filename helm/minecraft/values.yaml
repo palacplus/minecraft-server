@@ -1,7 +1,7 @@
 # GitHub Actions publishes ghcr.io/<owner>/<repo>-neoforge:<release-tag> (see .github/workflows).
 image:
   repository: ghcr.io/palacplus/minecraft-server-neoforge
-  tag: latest
+  tag: 0.0.3
   pullPolicy: IfNotPresent
 
 nameOverride: ""
