@@ -42,7 +42,7 @@ minecraft:
 resources:
   requests:
     cpu: "1"
-    memory: 5Gi
+    memory: 8Gi
   limits:
     cpu: "4"
     memory: 9Gi
