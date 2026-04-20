@@ -227,13 +227,6 @@
 		#Allowed Values: IGNITE, IGNITE_ON_IMPACT, NONE
 		explode_tnt = "IGNITE"
 
-		[functional.cannon.cannon_boat]
-			enabled = true
-			#Cannon boat recoil multiplier. Higher values will make the cannon boat recoil more when firing a cannonball
-			# Default: 0.5
-			# Range: 0.0 ~ 5.0
-			recoil_multiplier = 0.5
-
 		[functional.cannon.cannonball]
 			enabled = true
 			#Cannonball power scaling. Higher values will make cannonballs have more energy. Reminder that the damage and breaking power of a cannonball is proportional to its energy (speed squared) times this constant
@@ -244,6 +237,13 @@
 			# Default: 1.1
 			# Range: 0.0 ~ 10.0
 			break_radius = 1.1
+
+		[functional.cannon.cannon_boat]
+			enabled = true
+			#Cannon boat recoil multiplier. Higher values will make the cannon boat recoil more when firing a cannonball
+			# Default: 0.5
+			# Range: 0.0 ~ 5.0
+			recoil_multiplier = 0.5
 
 		[functional.cannon.plunderer]
 			enabled = true
@@ -293,10 +293,10 @@
 	statue = true
 	doormat = true
 	flint_block = true
-	fine_wood = true
 	candle_holder = true
 	fire_pit = true
 	wicker_fence = true
+	fine_wood = true
 
 	[building.sconce]
 		enabled = true
@@ -369,7 +369,7 @@
 		#If enabled end crystals placed on a pedestals will provide an enchantment power bonus equivalent to 3 bookshelves
 		# Default: 3.0
 		# Range: 0.0 ~ 100.0
-		crystal_enchanting = 3.0
+		crystal_enchanting = 3
 
 	[building.ash]
 		enabled = true
@@ -400,28 +400,9 @@
 
 	[building.globe]
 		enabled = true
+		sepia_globe = true
 		#Displays current coordinates when using a globe
 		show_coordinates = true
-		sepia_globe = true
-
-	[building.way_sign]
-		enabled = true
-
-		[building.way_sign.road_signs]
-			#Entirely disables them from spawning
-			enabled = true
-			#With this option road signs will display the distance to the structure that they are pointing to
-			show_distance_text = true
-			#Maximum distance in chunks that road signs will search for structures
-			# Default: 200
-			# Range: 0 ~ 1000
-			max_search_radius = 200
-			#Speeds up way sign feature searching by making the search stop at the first found structure. This means that way signs won't point to the nearest structure anymore
-			exit_search_early = true
-			#Maximum number of structure types from the tag that road signs will attempt to look for every time. Decreasing might speed up search at the cost of making them not point to the nearest structure out of all. Also if made too low and in cases it were to pick a structure that only spawns very rarely, this would actually slow down the search instead of speeding it up
-			# Default: 12
-			# Range: 1 ~ 100
-			max_structures_searches = 12
 
 	[building.daub]
 		enabled = true
@@ -449,7 +430,26 @@
 	[building.flower_box]
 		enabled = true
 		#Makes so flower boxes can only contain one tall flower item per block
-		simple_mode = true
+		simple_mode = false
+
+	[building.way_sign]
+		enabled = true
+
+		[building.way_sign.road_signs]
+			#Entirely disables them from spawning
+			enabled = true
+			#With this option road signs will display the distance to the structure that they are pointing to
+			show_distance_text = true
+			#Maximum distance in chunks that road signs will search for structures
+			# Default: 200
+			# Range: 0 ~ 1000
+			max_search_radius = 200
+			#Speeds up way sign feature searching by making the search stop at the first found structure. This means that way signs won't point to the nearest structure anymore
+			exit_search_early = true
+			#Maximum number of structure types from the tag that road signs will attempt to look for every time. Decreasing might speed up search at the cost of making them not point to the nearest structure out of all. Also if made too low and in cases it were to pick a structure that only spawns very rarely, this would actually slow down the search instead of speeding it up
+			# Default: 12
+			# Range: 1 ~ 100
+			max_structures_searches = 12
 
 	[building.netherite_doors]
 		door = true
@@ -622,21 +622,17 @@
 	creative_tab = false
 	#Set to false to disable custom dispenser behaviors (i.e: filling jars) if for some reason they are causing trouble
 	dispensers = true
-	#Disable startup messages and sanity check that the mod performs to inform of possible detected crashes that might occur due to issues
-	sanity_checks_messages = true
 	#slightly increase this or decrease this number to tweak the red merchant spawn chance. Won't spawn at 0 and will spawn twice as often on 2
 	# Default: 1.0
 	# Range: 0.0 ~ 10.0
 	red_merchant_spawn_multiplier = 1.0
+	#Disable startup messages and sanity check that the mod performs to inform of possible detected crashes that might occur due to issues
+	sanity_checks_messages = true
 	#Allowed Values: ALWAYS, CACHED, CACHED_ZIPPED, NEVER
 	dynamic_assets_generation_mode = "CACHED"
 
 #Vanilla tweaks
 [tweaks]
-
-	[tweaks.dragon_banner_pattern]
-		#Adds dragon banner pattern made from dragon head
-		enabled = true
 
 	[tweaks.golden_apple_disenchant]
 		enabled = true
@@ -712,10 +708,10 @@
 			max_structures_searches = 1
 
 	[tweaks.placeable_books]
-		#Allow books and enchanted books to be placed on the ground
-		enabled = true
 		#Allow all books to be placed both vertically and horizontally
 		mixed_books = false
+		#Allow books and enchanted books to be placed on the ground
+		enabled = true
 
 	[tweaks.zombie_horse]
 		#Feed a stack of rotten flesh to a skeleton horse to buff him up to a zombie horse
@@ -762,6 +758,10 @@
 		# Default: 0.15
 		# Range: 0.0 ~ 1.0
 		chance_per_slime_size = 0.15
+
+	[tweaks.dragon_banner_pattern]
+		#Adds dragon banner pattern made from dragon head
+		enabled = true
 
 	[tweaks.clock_and_compass]
 		#Allow to right click with a clock to display current time in numerical form

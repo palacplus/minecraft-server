@@ -4,58 +4,90 @@
 	colorselector: {
 		# Colors recently selected in the color selector
 		# Default: []
-		recents: [I; ]
+		recents: [I;
+			-8192251
+			-4456533
+			-7602305
+			-5701709
+			-9109638
+			-13238457
+			-8323193
+			-13238475
+			-5439558
+			-14287052
+			-8978593
+			-49623
+			-1083534
+			-1
+			-45243
+			-24678
+		]
 	}
 	sidebar: {
 		buttons: {
-			"ftbteams:my_team": {
-				enabled: true
-				x: 0
-				y: 1
-			}
-			"ftbquests:quests": {
-				enabled: true
-				x: 2
-				y: 1
-			}
 			"ftbchunks:chunks": {
 				enabled: true
-				x: 3
-				y: 1
-			}
-			"ftblibrary:toggle/night": {
-				enabled: true
-				x: 2
+				x: 0
 				y: 0
 			}
-			"ftbteams:team_lives": {
+			"ftblibrary:toggle/night": {
+				enabled: false
+				x: -1
+				y: -1
+			}
+			"ftbessentials:trash_can": {
+				enabled: true
+				x: 2
+				y: 1
+			}
+			"ftbultimine:config": {
 				enabled: true
 				x: 1
 				y: 1
 			}
 			"ftblibrary:toggle/gamemode": {
-				enabled: true
-				x: 0
-				y: 0
+				enabled: false
+				x: -1
+				y: -1
 			}
 			"ftblibrary:config": {
 				enabled: true
-				x: 4
+				x: 0
 				y: 1
 			}
 			"ftbchunks:claim_chunks": {
 				enabled: true
-				x: 5
-				y: 1
-			}
-			"ftblibrary:toggle/day": {
-				enabled: true
-				x: 1
+				x: 2
 				y: 0
 			}
 			"ftblibrary:toggle/rain": {
+				enabled: false
+				x: -1
+				y: -1
+			}
+			"ftbteams:my_team": {
 				enabled: true
 				x: 3
+				y: 0
+			}
+			"ftbquests:quests": {
+				enabled: true
+				x: 4
+				y: 0
+			}
+			"ftblibrary:toggle/day": {
+				enabled: false
+				x: -1
+				y: -1
+			}
+			"createultimine:config": {
+				enabled: true
+				x: 3
+				y: 1
+			}
+			"leaderboards:leaderboards": {
+				enabled: true
+				x: 1
 				y: 0
 			}
 		}

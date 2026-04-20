@@ -20,7 +20,6 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/jvm: {{ include "minecraft.userJvmArgs" . | sha256sum }}
         checksum/server-properties: {{ include "minecraft.serverPropertiesContent" . | trim | sha256sum }}
         {{- with .Values.podAnnotations }}
         {{- toYaml . | nindent 8 }}

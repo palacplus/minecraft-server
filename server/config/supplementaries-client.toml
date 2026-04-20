@@ -143,11 +143,9 @@
 	#Disables Optifine warn screen
 	no_optifine_warn_screen = false
 	#Disables Amendments suggestion screen
-	no_amendments_screen = false
-	#Disable incompatible mods warning screen
-	no_incompatible_mods_screen = false
+	no_amendments_screen = true
 	#Enable Quark style config button on main menu. Needs Configured installed to work
-	config_button = true
+	config_button = false
 	#Config button Y offset
 	# Default: 0
 	# Range: -10000 ~ 10000
@@ -158,6 +156,8 @@
 	placeable_tooltips = true
 	#Enables custom Configured config screen
 	custom_configured_screen = true
+	#Disable incompatible mods warning screen
+	no_incompatible_mods_screen = false
 	#unfunny
 	"I am very boring" = false
 	#Allowed Values: ALWAYS, CACHED, CACHED_ZIPPED, NEVER

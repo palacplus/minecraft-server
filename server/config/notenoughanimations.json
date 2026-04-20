@@ -74,5 +74,6 @@
   "enableInWorldBookRendering": false,
   "disableLegSmoothing": false,
   "bowAnimation": "VANILLA",
+  "customBowRotationLock": false,
   "burningAnimation": true
 }

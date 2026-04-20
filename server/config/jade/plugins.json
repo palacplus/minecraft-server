@@ -1,8 +1,4 @@
 {
-  "framedblocks": {
-    "framed_item_frame": true,
-    "framed_block_generic": true
-  },
   "minecraft": {
     "item_storage.show_name_amount": 5,
     "furnace": true,
@@ -56,15 +52,32 @@
     "painting": true,
     "chiseled_bookshelf": true
   },
-  "jade_access": {
-    "held_item": true,
-    "sign": true,
-    "block": true,
-    "entity": true,
-    "entity_variant": true
+  "tempad": {
+    "chronon": true,
+    "rudimentary": true,
+    "anchor": true,
+    "metronome": true,
+    "workstation": true,
+    "timedoor": true
   },
-  "immersiveengineering": {
-    "multiblock_icon": true
+  "jadeaddons.create": {
+    "filter": true,
+    "backtank_capacity": true,
+    "goggles.requires_goggles": true,
+    "goggles": false,
+    "blaze_burner": true,
+    "exact_block": true,
+    "goggles.detailed": false,
+    "placard": true
+  },
+  "apothic_spawners": {
+    "spawner": true
+  },
+  "entangled": {
+    "entangled_block_component": true
+  },
+  "ftbquests": {
+    "barrier": true
   },
   "jade": {
     "coordinates.rel": false,
@@ -77,8 +90,9 @@
     "block_properties": false,
     "mod_name": true
   },
-  "balm": {
-    "jade": true
+  "extendedae": {
+    "jade_chamber": true,
+    "jade_wireless": true
   },
   "ae2": {
     "part_icon": true,
@@ -92,8 +106,9 @@
     "crafting_monitor": true,
     "part_name": true
   },
-  "ars_nouveau": {
-    "mob_jar": true
+  "tesseract": {
+    "tesseract": true,
+    "remove_default": true
   },
   "mekanism": {
     "chemical": true,
@@ -102,42 +117,117 @@
     "energy": true,
     "tooltip_renderer": true
   },
-  "easy_villagers": {
-    "villager": true,
-    "converter": true,
-    "breeder": true
-  },
-  "mysticalagradditions": {
-    "infused_farmland": true
-  },
   "pipez": {
     "pipe": true
   },
-  "supplementaries": {
-    "hat_stand": true
+  "reliquary": {
+    "pedestal": true,
+    "altar": true,
+    "mortar": true,
+    "cauldron": true
   },
   "waystones": {
     "waystone": true
   },
-  "corpse": {
-    "corpse": true
+  "cookingforblockheads": {
+    "fridge": true,
+    "oven": true,
+    "sink": true,
+    "preservation_chamber": true,
+    "milk_jar": true,
+    "toaster": true
   },
-  "mysticalagriculture": {
-    "infused_farmland": true,
-    "crop": true,
-    "inferium_crop": true
+  "barbequesdelight": {
+    "grill": true
   },
-  "securitycraft": {
-    "showowner": true,
-    "showmodules": true,
-    "entity_info": true,
-    "block_info": true,
-    "showcustomname": true
+  "replication": {
+    "matter_tank": true
   },
-  "storagedrawers": {
-    "display.stacklimit": true,
-    "main": true,
-    "display.content": true,
-    "display.status": true
+  "framedblocks": {
+    "framed_item_frame": true,
+    "framed_block_generic": true
+  },
+  "compactmachines": {
+    "show_owner": false,
+    "bound_machine": true
+  },
+  "jade_access": {
+    "held_item": true,
+    "sign": true,
+    "block": true,
+    "entity": true,
+    "entity_variant": true
+  },
+  "mekajadeupgrade": {
+    "upgrades": true
+  },
+  "pneumaticcraft": {
+    "pneumatic": true,
+    "tube_module": true,
+    "entity": true,
+    "redstone": true,
+    "camo": true,
+    "semiblock": true
+  },
+  "apotheosis": {
+    "adventure": true
+  },
+  "modern_industrialization": {
+    "overclock": true,
+    "pipe": true
+  },
+  "occultism": {
+    "foliot": true,
+    "sacrificial": true
+  },
+  "apothic_enchanting": {
+    "ench": true
+  },
+  "balm": {
+    "jade": true
+  },
+  "functionalstorage": {
+    "armory": true,
+    "drawer": true
+  },
+  "integrateddynamicscompat": {
+    "proxy": true,
+    "mechanical_squeezer": true,
+    "mechanical_drying_basin": true,
+    "drying_basin": true,
+    "part": true,
+    "squeezer": true
+  },
+  "modularrouters": {
+    "router": true
+  },
+  "xycraft": {
+    "energy_pipe_debug": true,
+    "tank_component": true,
+    "extractor_component": true
+  },
+  "ars_nouveau": {
+    "mob_jar": true
+  },
+  "jadeaddons": {
+    "equipment_requirement": ""
+  },
+  "exposure": {
+    "lightroom": true,
+    "photograph_frame": true
+  },
+  "jadeaddons.lootr": {
+    "info": true
+  },
+  "crystalix": {
+    "crystalix_block": true
+  },
+  "twilightforest": {
+    "drying_rack": true,
+    "chiseled_bookshelf_spawner": true,
+    "quest_ram_wool": true
+  },
+  "supplementaries": {
+    "hat_stand": true
   }
 }

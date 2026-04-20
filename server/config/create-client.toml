@@ -26,7 +26,7 @@
 	#Set to 0 to disable the button altogether
 	# Default: 2
 	# Range: 0 ~ 4
-	mainMenuConfigButtonRow = 2
+	mainMenuConfigButtonRow = 0
 	#.
 	#Offset the Create config button in the main menu by this many pixels on the X axis
 	#The sign (-/+) of this value determines what side of the row the button appears on (left/right)
@@ -117,13 +117,6 @@
 		ambientVolumeCap = 0.10000000149011612
 
 	#.
-	#Mod Integration and JEI
-	[client.jeiIntegration]
-		#.
-		#Whether to auto-update the JEI search when searching in the stock keeper UI
-		syncJeiSearch = true
-
-	#.
 	#Railway related settings
 	[client.trains]
 		#.
@@ -144,3 +137,10 @@
 		#Track Network Color on maps
 		#Allowed Values: RED, GREY, WHITE
 		trainMapColorTheme = "RED"
+
+	#.
+	#Mod Integration and JEI
+	[client.jeiIntegration]
+		#.
+		#Whether to auto-update the JEI search when searching in the stock keeper UI
+		syncJeiSearch = true

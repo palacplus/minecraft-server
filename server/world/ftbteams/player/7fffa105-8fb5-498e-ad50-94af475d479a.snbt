@@ -8,11 +8,10 @@
 	properties: {
 		"ftbteams:display_name": "mpalacio"
 		"ftbteams:description": ""
-		"ftbteams:color": "#8AFF59"
+		"ftbteams:color": "#FF8E59"
 		"ftbteams:free_to_join": 0b
 		"ftbteams:max_msg_history_size": 1000
 		"ftbteams:team_stages": [ ]
-		"ftbteams:lives_remaining": 0
 		"ftbchunks:allow_explosions": 0b
 		"ftbchunks:allow_mob_griefing": 0b
 		"ftbchunks:allow_fake_players": 0b

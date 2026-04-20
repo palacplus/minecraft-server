@@ -1,9 +1,6 @@
 {
-  "version": "1.6.2",
-  "shouldAutoUpdate": true,
   "allowedDimensions": [
-    "aether:the_aether",
-    "aether_ii:aether_highlands"
+    "aether:the_aether"
   ],
   "allowedBiomes": [],
   "equatorZ": 0,

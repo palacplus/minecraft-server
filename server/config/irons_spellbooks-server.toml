@@ -1,19 +1,3 @@
-###############################################################################################
-###                                                                                          ##
-###                                      ATTENTION:                                          ##
-###           If you are looking for spell configs, they are now datapack driven!            ##
-###                     Use '/ironsSpellbooks config' in-game for hints!                     ##
-###                                                                                          ##
-###                                                                                          ##
-###############################################################################################
-#
-#Other Configuration
-[Blocks]
-	#Whether Portal Frames can only be dyed by the block's owner. Default: true
-	portalFrameRestrictDye = true
-	#Whether Portal Frames can only be destroyed by the block's owner. Default: false
-	portalFrameRestrictBreaking = false
-
 [Misc]
 	#Defines percentage brackets of spell level to corresponding rarity, ie first 30% of spell levels are common.
 	#rarityConfig array values must sum to 1: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]. Default: [.3d, .25d, .2d, .15d, .1d]
@@ -94,3 +78,10 @@
 		additionalAttackDamage = 0.0
 		#Additional Spell Power (additive percent)
 		additionalSpellPower = 0.0
+
+#Other Configuration
+[Blocks]
+	#Whether Portal Frames can only be dyed by the block's owner. Default: true
+	portalFrameRestrictDye = true
+	#Whether Portal Frames can only be destroyed by the block's owner. Default: false
+	portalFrameRestrictBreaking = false

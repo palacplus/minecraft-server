@@ -3,7 +3,7 @@
 	#Dimensions where hostile mobs will not spawn. Ex: ["minecraft:overworld", "undergarden:undergarden"]. . Run /forge dimensions for a list.
 	dimensionBlacklist = []
 	#Spawn a book in the players inventory on login
-	spawnBook = true
+	spawnBook = false
 	#How much mana whirlisprigs consume per generation
 	# Default: 250
 	# Range: 0 ~ 10000
@@ -51,12 +51,6 @@
 	# Range: 0 ~ 300
 	drygmyQuantityCap = 5
 
-[alakarkinos]
-	#How much mana alakarkinos consume per generation
-	# Default: 1000
-	# Range: 0 ~ 10000
-	alakarkinosSourceCost = 1000
-
 #Items
 [item]
 	#Spawn Caster Tomes in Dungeon Loot?
@@ -95,3 +89,9 @@
 	# Default: 100
 	# Range: > 0
 	maxLogEvents = 100
+
+[alakarkinos]
+	#How much mana alakarkinos consume per generation
+	# Default: 1000
+	# Range: 0 ~ 10000
+	alakarkinosSourceCost = 1000

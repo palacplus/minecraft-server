@@ -33,17 +33,6 @@ app.kubernetes.io/name: {{ include "minecraft.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
-{{- define "minecraft.userJvmArgs" -}}
-# Managed by Helm (copied into /data on container start)
--Xmx{{ .Values.minecraft.jvm.memory }} -Xms{{ .Values.minecraft.jvm.memory }}
-{{- range .Values.minecraft.jvm.extraArgs }}
-{{ . }}
-{{- end }}
-{{- range .Values.minecraft.jvmExtraLines }}
-{{ . }}
-{{- end }}
-{{- end }}
-
 {{- define "minecraft.serverPropertiesContent" -}}
 {{- .Files.Get "files/server.properties" }}
 {{- end }}

@@ -1,14 +1,3 @@
-#Blocks
-[blocks]
-	#Maximum storage lectern linking range
-	# Default: 30
-	# Range: > 1
-	lecternLinkRange = 30
-	#Maximum range of the decor blossom
-	# Default: 30
-	# Range: > 1
-	decorBlossomRange = 30
-
 #Mana
 [mana]
 	#Base mana regen in seconds
@@ -63,6 +52,17 @@
 [warp_portals]
 	#Enable warp portals?
 	enableWarpPortals = true
+
+#Blocks
+[blocks]
+	#Maximum storage lectern linking range
+	# Default: 30
+	# Range: > 1
+	lecternLinkRange = 30
+	#Maximum range of the decor blossom
+	# Default: 30
+	# Range: > 1
+	decorBlossomRange = 30
 
 #Infinite Spells Mode
 [spell_length]

@@ -5,7 +5,7 @@
 cooldownOverlayOffset = 10
 #Display artifacts on cooldown next to the hotbar
 #Allowed Values: true, false
-enableCooldownOverlay = true
+enableCooldownOverlay = false
 #Whether models for gloves are shown in first person
 #Allowed Values: true, false
 showFirstPersonGloves = true
@@ -15,6 +15,3 @@ showTooltips = true
 #Whether mimics can use textures from Lootr or Quark
 #Allowed Values: true, false
 useModdedMimicTextures = true
-#Controls the vertical position of the Helium Flamingo's charge meter
-#Range: -2147483648 ~ 2147483647
-heliumFlamingoOverlayOffset = 0

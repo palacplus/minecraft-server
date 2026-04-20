@@ -5,8 +5,6 @@
 	# Default: 18000
 	# Range: > 0
 	max_age = 18000
-	#if true, accessing a Lootr container will bypass spawn protection
-	bypass_spawn_protection = true
 	#configuration options for the conversion of chests
 	#if true, no chests will be converted
 	disable = false
@@ -18,6 +16,11 @@
 	check_world_border = false
 	#checks structure pieces as well as structure starts when determining if a structure contains a position, more accurate but may cause lag (default true)
 	perform_piecewise_check = true
+	#if true, accessing a Lootr container will bypass spawn protection
+	bypass_spawn_protection = true
+	#determines when lootr saves data files for containers. 'always' will always save them, which may result in more files than expected; 'when_opened' will only save them the first time they have been opened; 'smart' defaults to 'always' but switches to 'when_opened' for aternos and exaroton
+	#Allowed Values: ALWAYS, SMART, WHEN_OPENED
+	save_mode = "SMART"
 	#whether or not the Elytra item frame should be converted into a standard loot chest with a guaranteed elytra
 	convert_elytras_to_chests = false
 	#whether or not the Elytra item frame should be converted into a Lootr item frame with an elytra inside
@@ -26,9 +29,6 @@
 	convert_item_frames = true
 	#whether or not to output a warning to the log when a suitable block entity has no loot table and is skipped during conversion
 	skip_logging_no_loot_table_at_generation = true
-	#determines when lootr saves data files for containers. 'always' will always save them, which may result in more files than expected; 'when_opened' will only save them the first time they have been opened; 'smart' defaults to 'always' but switches to 'when_opened' for aternos and exaroton
-	#Allowed Values: ALWAYS, SMART, WHEN_OPENED
-	save_mode = "SMART"
 
 [whitelist]
 	#configuration for specific whitelisting and blacklisting of dimensions, loot tables and modids
@@ -98,14 +98,14 @@
 	decay_modids = []
 	#list of dimensions where loot chests should automatically decay (default: blank, e.g., ["minecraft:the_nether", "minecraft:the_end"])
 	decay_dimensions = []
-	#when true, decayed containers will be replaced with their equivalent vanilla block instead of being removed
-	replace_when_decayed = false
 	#containers that have already been marked as decaying will be decayed during level tick as well as when next trapped
 	perform_decay_while_ticking = true
 	#containers that have not yet been marked as decaying will be marked for decay during level tick as well as when next trapped
 	start_decay_while_ticking = false
 	#overriding decay_loot_tables, decay_modids and decay_dimensions: all chests will decay after being trapped for the first time
 	decay_all = false
+	#when true, decayed containers will be replaced with their equivalent vanilla block instead of being removed
+	replace_when_decayed = false
 
 [refresh]
 	#configuration options for refreshing containers

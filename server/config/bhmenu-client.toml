@@ -1,14 +1,14 @@
 #Your partner ID to use in during the ordering process.
 #Without this you will not be credited for the purchases.
 #(Your partner id is not the same as your referral link, please check your client area to find your partner id at https://www.bisecthosting.com/partners/console.php).
-partner_id = "6544"
+partner_id = "2567"
 #The id of this modpack.
 #(This is BH internal pack id; Find the id here: https://www.bisecthosting.com/partners/console.php)
-pack_id = ""
+pack_id = "24901"
 #Set this to false to disable pack config screen and enable user configs instead.
 #This should always be done by the pack author once they are done with configuring the pack.
 #To re-enable Pack Edit Mode, please edit the config file.
-pack_edit_mode = true
+pack_edit_mode = false
 
 	[modules.server_creator_banner]
 		enabled = true
@@ -16,9 +16,9 @@ pack_edit_mode = true
 		#Modpack Configs
 		[modules.server_creator_banner.pack]
 			#The title to display at the top of the entry.
-			title = "Need a server?"
+			title = "Need A Server?"
 			#The description to display below the title.
-			description = "Click me to get your own server with 25% discount!"
+			description = "Click me to get your own Craftoria server!"
 			#Set this to true to use specific language translation keys.
 			#This requires a custom mod that adds resource files, such as OpenLoader.
 			#Use 'server_entry.title' key for the Title;
@@ -26,7 +26,7 @@ pack_edit_mode = true
 			use_language_files = false
 
 	[modules.public_server_list]
-		enabled = false
+		enabled = true
 
 		#Modpack Configs
 		[modules.public_server_list.pack]

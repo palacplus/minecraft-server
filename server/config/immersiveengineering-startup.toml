@@ -19,5 +19,4 @@ preferredOres = ["immersiveengineering", "minecraft"]
 #Setting any of these to false disables the respective compat
 [compat]
 	theoneprobe = true
-	create = true
 	computercraft = true

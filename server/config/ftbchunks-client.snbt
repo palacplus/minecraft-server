@@ -137,7 +137,40 @@
 		# Show entity heads on minimap
 		# Default: true
 		entity_heads: true
-		entity_icon: { }
+		entity_icon: {
+			"aquaculture:bluegill": false
+			"minecraft:axolotl": true
+			"minecraft:pig": true
+			"minecraft:chicken": true
+			"minecraft:creeper": true
+			"artifacts:mimic": true
+			"irons_spellbooks:necromancer": true
+			"aquaculture:tambaqui": false
+			"minecraft:skeleton": true
+			"minecraft:zombie_villager": true
+			"minecraft:fox": true
+			"ars_nouveau:starbuncle": true
+			"minecraft:zombie": true
+			"minecraft:glow_squid": true
+			"duckling:duck": true
+			"creeperoverhaul:cave_creeper": true
+			"minecraft:horse": true
+			"minecraft:cow": true
+			"minecraft:squid": true
+			"creeperoverhaul:bamboo_creeper": true
+			"aquaculture:perch": false
+			"aquaculture:piranha": false
+			"vinery:wandering_winemaker": true
+			"creeperoverhaul:dripstone_creeper": true
+			"aquaculture:arrau_turtle": false
+			"minecraft:enderman": true
+			"minecraft:spider": true
+			"minecraft:witch": true
+			"vinery:mule": true
+			"minecraft:bat": true
+			"minecraft:parrot": true
+			"minecraft:sheep": false
+		}
 		
 		# Minimap font scaling (values not a multiple of 0.5 may look bad)
 		# Default: 0.5
@@ -163,6 +196,7 @@
 			"ftbchunks:game_time"
 			"ftbchunks:real_time"
 			"ftbchunks:debug"
+			"seasonhud:season"
 		]
 		info_settings: { }
 		
@@ -256,11 +290,11 @@
 		
 		# Enables creation of death waypoints
 		# Default: true
-		death_waypoints: true
+		death_waypoints: false
 		
 		# Show waypoints in world
 		# Default: true
-		in_world_waypoints: true
+		in_world_waypoints: false
 		
 		# Minimum distance before waypoint dots start to fade
 		# Default: 1.0

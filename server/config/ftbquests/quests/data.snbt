@@ -9,11 +9,11 @@
 	drop_book_on_death: false
 	drop_loot_crates: false
 	emergency_items_cooldown: 300
-	fallback_locale: "en_us"
-	grid_scale: 0.5d
+	fallback_locale: ""
+	grid_scale: 0.05d
 	hide_excluded_quests: false
 	icon: {
-		id: "supplementaries:cog_block"
+		id: "craftoria:logo"
 	}
 	lock_message: ""
 	loot_crate_no_drop: {
@@ -22,7 +22,7 @@
 		passive: 4000
 	}
 	pause_game: false
-	progression_mode: "linear"
+	progression_mode: "default"
 	show_lock_icons: false
 	verify_on_load: false
 	version: 13

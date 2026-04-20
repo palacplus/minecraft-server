@@ -73,7 +73,7 @@
 	#Maximum length in blocks of chain conveyor connections.
 	# Default: 32
 	# Range: > 5
-	maxChainConveyorLength = 32
+	maxChainConveyorLength = 64
 	#.
 	#Maximum amount of connections each chain conveyor can have.
 	# Default: 4
@@ -439,13 +439,13 @@
 	# Range: 1 ~ 10
 	brassTunnelTimer = 10
 	#.
+	#Whether hostile mobs walking near a seat will start riding it.
+	seatHostileMobs = true
+	#.
 	#The amount of ticks a factory gauge waits between requests.
 	# Default: 100
 	# Range: > 5
 	factoryGaugeTimer = 100
-	#.
-	#Whether hostile mobs walking near a seat will start riding it.
-	seatHostileMobs = true
 
 #.
 #Everything related to Schematic tools

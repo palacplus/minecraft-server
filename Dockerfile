@@ -7,7 +7,7 @@ RUN chmod +x /docker-entrypoint.sh
 WORKDIR /opt/minecraft
 COPY --chown=1000:1000 server/ /opt/minecraft/
 
-RUN chmod +x /opt/minecraft/run.sh /opt/minecraft/start.sh 2>/dev/null || true
+RUN chmod +x /opt/minecraft/startserver.sh 2>/dev/null || true
 
 USER 1000:1000
 WORKDIR /data

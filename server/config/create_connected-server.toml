@@ -53,7 +53,6 @@ allowDualWildcardLink = false
 			centrifugal_clutch = 0.0
 			brake = 0.0
 			encased_chain_cogwheel = 0.0
-			kinetic_battery = 64.0
 			six_way_gearbox = 0.0
 			shear_pin = 0.0
 			parallel_gearbox = 0.0
@@ -61,11 +60,12 @@ allowDualWildcardLink = false
 			freewheel_clutch = 0.0
 			overstress_clutch = 0.0
 			inverted_clutch = 0.0
+			kinetic_battery = 64.0
 
 		#.
 		#[in Stress Units]
 		#Configure how much stress a source can accommodate for.
 		[stressValues.v1.capacity]
 			crank_wheel = 8.0
-			kinetic_battery = 32.0
 			large_crank_wheel = 8.0
+			kinetic_battery = 32.0

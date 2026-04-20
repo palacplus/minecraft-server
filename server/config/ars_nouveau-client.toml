@@ -37,6 +37,12 @@
 	# Default: 0
 	# Range: > -2147483648
 	yManaBar = 0
+	#If the Storage Lectern should show the recipe book icon
+	showRecipeBook = true
+	#Inform the player of Dynamic lights once.
+	informLights = false
+	#Whether the Selection HUD is toggled or held
+	toggleSelectionHUD = true
 	#X offset for the Spell Name
 	# Default: 10
 	# Range: > -2147483648
@@ -45,12 +51,6 @@
 	# Default: 30
 	# Range: > -2147483648
 	ySpellName = 30
-	#If the Storage Lectern should show the recipe book icon
-	showRecipeBook = true
-	#Inform the player of Dynamic lights once.
-	informLights = false
-	#Whether the Selection HUD is toggled or held
-	toggleSelectionHUD = true
 	#If scrolling in the Storage Lectern should be inverted
 	invertLecternScrolling = false
 

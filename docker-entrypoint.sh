@@ -19,11 +19,6 @@ else
   log "data dir has content; skipping pack copy"
 fi
 
-if [[ -f /etc/minecraft/user_jvm_args.txt ]]; then
-  log "copying mounted user_jvm_args.txt to ${DATA_DIR}/user_jvm_args.txt"
-  cp /etc/minecraft/user_jvm_args.txt "${DATA_DIR}/user_jvm_args.txt"
-fi
-
 if [[ -f /etc/minecraft/server.properties ]]; then
   log "copying mounted server.properties to ${DATA_DIR}/server.properties"
   cp /etc/minecraft/server.properties "${DATA_DIR}/server.properties"
@@ -31,4 +26,4 @@ fi
 
 log "starting server (cwd ${DATA_DIR})"
 cd "${DATA_DIR}"
-exec ./run.sh
+exec ./startserver.sh
