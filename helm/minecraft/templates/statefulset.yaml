@@ -107,10 +107,6 @@ spec:
               {{- if .Values.persistence.volumeSubPath }}
               subPath: {{ .Values.persistence.volumeSubPath | quote }}
               {{- end }}
-            - name: jvm
-              mountPath: /etc/minecraft/user_jvm_args.txt
-              subPath: user_jvm_args.txt
-              readOnly: true
             - name: server-properties
               mountPath: /etc/minecraft/server.properties
               subPath: server.properties
@@ -135,9 +131,6 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       volumes:
-        - name: jvm
-          configMap:
-            name: {{ include "minecraft.fullname" . }}-jvm
         - name: server-properties
           configMap:
             name: {{ include "minecraft.fullname" . }}-server-properties
