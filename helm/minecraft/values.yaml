@@ -42,10 +42,10 @@ minecraft:
 resources:
   requests:
     cpu: "1"
-    memory: 8Gi
+    memory: 4Gi
   limits:
     cpu: "4"
-    memory: 9Gi
+    memory: 10Gi
 
 # World, player data, logs, and any files written under /data live on this volume.
 # Leave enabled: true for production; disabling uses emptyDir and data is lost when the pod is removed (existingClaim is then ignored).
