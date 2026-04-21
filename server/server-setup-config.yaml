@@ -60,7 +60,7 @@ launch:
   # specifies the max amount of ram the server is supposed to launch with (Xmx)
   maxRam: 10G
   # specifies the minimal amount of ram the server is supposed to launch with (Xms)
-  minRam: 3G
+  minRam: 5G
   # specifies whether the server is supposed to auto restart after crash
   autoRestart: false
   javaArgs:
